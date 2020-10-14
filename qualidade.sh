@@ -122,7 +122,7 @@ fi
 while true; do
 
 	clear
-	printf "\n ${FORA}K${GREEN}########${FORA}B ${TITULO} TESTES DE CONECTIVIDADE, LOSS E RTT ${FORA}1${GREEN}########${FORA}A ${NC} - $objetivo\n"
+	printf "\n ${FORA}K${GREEN}########${FORA}B ${TITULO} TESTES DE CONECTIVIDADE, LOSS E RTT ${FORA}1${GREEN}########${FORA}A ${NC} - MODO: $objetivo\n"
 	echo -e "\n \e[95mUtilizando RTT: $THRTT ms | LOSS: $THLOSS % | QTD_PING: $PQTD | INTERVALO: $PITVL s | MODLIDADE: $m \n"
 
 	while read i; do
@@ -161,7 +161,7 @@ while true; do
 				fi
 			fi
 			clear
-			printf "\n ${FORA}K${GREEN}########${FORA}B ${TITULO} TESTES DE CONECTIVIDADE, LOSS E RTT ${FORA}1${GREEN}########${FORA}A ${NC} - $objetivo\n"
+			printf "\n ${FORA}K${GREEN}########${FORA}B ${TITULO} TESTES DE CONECTIVIDADE, LOSS E RTT ${FORA}1${GREEN}########${FORA}A ${NC} - MODO: $objetivo\n"
 			echo -e "\n \e[95mUtilizando RTT: $THRTT ms | LOSS: $THLOSS % | QTD_PING: $PQTD | INTERVALO: $PITVL s | MODLIDADE: $m \n"
                 	reg=$(cat $PRELIMINAR)
                		printf "$reg" | column
@@ -179,7 +179,7 @@ while true; do
 			fi
 
  			clear
-			printf "\n ${FORA}K${GREEN}########${FORA}B ${TITULO} TESTES DE CONECTIVIDADE, LOSS E RTT ${FORA}1${GREEN}########${FORA}A ${NC} - $objetivo\n"
+			printf "\n ${FORA}K${GREEN}########${FORA}B ${TITULO} TESTES DE CONECTIVIDADE, LOSS E RTT ${FORA}1${GREEN}########${FORA}A ${NC} - MODO: $objetivo\n"
                         echo -e "\n \e[95mUtilizando RTT: $THRTT ms | LOSS: $THLOSS % | QTD_PING: $PQTD | INTERVALO: $PITVL s | MODLIDADE: $m \n"
                         reg=$(cat $PRELIMINAR_T)
                         printf "$reg" | column
