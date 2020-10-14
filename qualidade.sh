@@ -46,7 +46,7 @@ OK='\033[0;96m';
 function cleanup {
 	#echo -e "\nApagando arquivos temporários..."
 	rm  -f *$$.txt
-	printf "\n ${NC} Kilo Bravo 1 Alpha - Ok!\n\n"
+	printf "\n ${NC} ... \n\n"
 }
 
 #Em caso de interrupção do programa, executa funnção de limpeza de arquivos temporários
@@ -64,13 +64,13 @@ echo Uso: $0 [opcoes]
 echo -e '\n  Opcoes:\n'
 
 echo '-m	modo de operação [sping | tudo | prob]'
-echo -e '-r	tempo de resposta em ms para considerar um local com problema de latência. \e[7mNão funciona com sping'
-echo -e '\e[0m-l	taxa de perdas em % para considerar um local com problema de perda de pacotes. \e[7mNão funciona com sping'
-echo -e '\e[0m-n	quantidade de pacotes por teste por host - (interfere no tempo e na precisão do teste). \e[7mNão funciona com sping'
-echo -e '\e[0m-i	intervalo de transissão entre pacotes - (interfere no tempo e na precisão do teste). \e[7mNão funciona com sping \e[0m.'
+echo -e '-r	tempo de resposta em ms para considerar um local com problema de latência. \e[7mNão funciona no modo sping'
+echo -e '\e[0m-l	taxa de perdas em % para considerar um local com problema de perda de pacotes. \e[7mNão funciona no modo sping'
+echo -e '\e[0m-n	quantidade de pacotes por teste por host - (interfere no tempo e na precisão do teste). \e[7mNão funciona no sping'
+echo -e '\e[0m-i	intervalo de transissão entre pacotes - (interfere no tempo e na precisão do teste). \e[7mNão funciona no modo sping \e[0m.'
 echo ''
 echo 'Sobre os modos de operação:'
-echo -e '\t ->sping - teste de ping para verificar disponibilidade.'
+echo -e '\t ->sping - teste de ping para verificar disponibilidade'
 echo -e '\t ->tudo - exibe o resultado de todos os testes de tempo de reposta (RTT) e LOSS, destacando problemas'
 echo -e '\t ->prob - teste de RTT e LOSS. Exibe apenas os testes dos locais com problema'
 echo ''
@@ -122,7 +122,7 @@ fi
 while true; do
 
 	clear
-	printf "\n ${GREEN} ########## ${TITULO} TESTES DE CONECTIVIDADE KILO BRAVO 1 ALPHA ${GREEN} ########## ${NC} - $objetivo\n"
+	printf "\n ${FORA}K${GREEN}########${FORA}B ${TITULO} TESTES DE CONECTIVIDADE, LOSS E RTT ${FORA}1${GREEN}########${FORA}A ${NC} - $objetivo\n"
 	echo -e "\n \e[95mUtilizando RTT: $THRTT ms | LOSS: $THLOSS % | QTD_PING: $PQTD | INTERVALO: $PITVL s | MODLIDADE: $m \n"
 
 	while read i; do
@@ -155,13 +155,13 @@ while true; do
 
 			if (( $(echo "$loss > $THLOSS" |bc -l) )) || (( $(echo "$rtt > $THRTT" |bc -l) ));then
 				if (( $(echo "$loss == 100.0" |bc -l) ));then
-					echo "${GREEN}$site - ${PROB}PERDAS: $loss %% | RTT: $rtt ms | ${NC}$time - ${FORA}FORA\n" >> $PRELIMINAR;
+					echo "${GREEN}$site - ${PROB}PERDAS: $loss %% | ${NC}$time - ${FORA}FORA\n" >> $PRELIMINAR;
 				else
 					echo "${GREEN}$site - ${NC}PERDAS: ${LC}$loss %% ${NC} | ${NC}RTT: ${RC}$rtt ms ${NC}| $time\n" >> $PRELIMINAR;
 				fi
 			fi
 			clear
-			printf "\n ${GREEN} ########## ${TITULO} TESTES DE CONECTIVIDADE KILO BRAVO 1 ALPHA ${GREEN} ########## ${NC} - $objetivo\n"
+			printf "\n ${FORA}K${GREEN}########${FORA}B ${TITULO} TESTES DE CONECTIVIDADE, LOSS E RTT ${FORA}1${GREEN}########${FORA}A ${NC} - $objetivo\n"
 			echo -e "\n \e[95mUtilizando RTT: $THRTT ms | LOSS: $THLOSS % | QTD_PING: $PQTD | INTERVALO: $PITVL s | MODLIDADE: $m \n"
                 	reg=$(cat $PRELIMINAR)
                		printf "$reg" | column
@@ -173,13 +173,13 @@ while true; do
                 	fi
 
 			if (( $(echo "$loss == 100.0" |bc -l) )); then
-				echo "${GREEN}$site - ${PROB}PERDAS: $loss %% | RTT: $rtt ms ${NC}| $time - ${FORA}FORA ${FORA}\n" >> $PRELIMINAR_T
+				echo "${GREEN}$site - ${PROB}PERDAS: $loss %% | $time - ${FORA}FORA ${FORA}\n" >> $PRELIMINAR_T
 			else
 				echo "${GREEN}$site - ${NC}PERDAS: ${LC}$loss %% ${NC} | ${NC}RTT: ${RC}$rtt ms ${NC}| $time\n" >> $PRELIMINAR_T
 			fi
 
  			clear
-                        printf "\n ${GREEN} ########## ${TITULO} TESTES DE CONECTIVIDADE KILO BRAVO 1 ALPHA ${GREEN} ########## ${NC} - $objetivo\n"
+			printf "\n ${FORA}K${GREEN}########${FORA}B ${TITULO} TESTES DE CONECTIVIDADE, LOSS E RTT ${FORA}1${GREEN}########${FORA}A ${NC} - $objetivo\n"
                         echo -e "\n \e[95mUtilizando RTT: $THRTT ms | LOSS: $THLOSS % | QTD_PING: $PQTD | INTERVALO: $PITVL s | MODLIDADE: $m \n"
                         reg=$(cat $PRELIMINAR_T)
                         printf "$reg" | column
