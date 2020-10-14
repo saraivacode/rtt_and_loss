@@ -61,13 +61,20 @@ usage() { u1="\nUso: $0 [-r <limiar de tempo de resposta em ms> [$THRTT] ] [-l <
 help() {
 echo -e '\nFerramenta de testes de RTT e LOSS\n'
 echo Uso: $0 [opcoes]
-echo -e '  Opcoes:\n'
+echo -e '\n  Opcoes:\n'
 
 echo '-m	modo de operação [sping | tudo | prob]'
 echo -e '-r	tempo de resposta em ms para considerar um local com problema de latência. \e[7mNão funciona com sping'
 echo -e '\e[0m-l	taxa de perdas em % para considerar um local com problema de perda de pacotes. \e[7mNão funciona com sping'
-echo -e '\e[0m--n	quantidade de pacotes por teste por host - (interfere no tempo e na precisão do teste)'
-echo '-i	intervalo de transissão entre pacotes - (interfere no tempo e na precisão do teste)'
+echo -e '\e[0m-n	quantidade de pacotes por teste por host - (interfere no tempo e na precisão do teste). \e[7mNão funciona com sping'
+echo -e '\e[0m-i	intervalo de transissão entre pacotes - (interfere no tempo e na precisão do teste). \e[7mNão funciona com sping \e[0m.'
+echo ''
+echo 'Sobre os modos de operação:'
+echo -e '\t ->sping - teste de ping para verificar disponibilidade.'
+echo -e '\t ->tudo - exibe o resultado de todos os testes de tempo de reposta (RTT) e LOSS, destacando problemas'
+echo -e '\t ->prob - teste de RTT e LOSS. Exibe apenas os testes dos locais com problema'
+echo ''
+echo Default: $0 -m $m -r $THRTT -l $THLOSS -n $PQTD -i $PITVL 
 
 exit 0
 
