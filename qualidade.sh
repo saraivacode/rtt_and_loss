@@ -111,16 +111,12 @@ else
         objetivo="TEMPO DE RESPOSTA E PERDAS - TUDO"
 fi
 
-#clear
-#printf "\n ${GREEN} ########## ${TITULO} TESTES DE CONECTIVIDADE KILO BRAVO 1 ALPHA ${GREEN} ########## ${NC} - $objetivo\n"
-#echo -e "\n \e[95mUtilizando RTT: $THRTT ms | LOSS: $THLOSS % | QTD_PING: $PQTD | INTERVALO: $PITVL s | MODLIDADE: $m \n"
-
 #Inicio da execução do programa em loop
 while true; do
 
-clear
-printf "\n ${GREEN} ########## ${TITULO} TESTES DE CONECTIVIDADE KILO BRAVO 1 ALPHA ${GREEN} ########## ${NC} - $objetivo\n"
-echo -e "\n \e[95mUtilizando RTT: $THRTT ms | LOSS: $THLOSS % | QTD_PING: $PQTD | INTERVALO: $PITVL s | MODLIDADE: $m \n"
+	clear
+	printf "\n ${GREEN} ########## ${TITULO} TESTES DE CONECTIVIDADE KILO BRAVO 1 ALPHA ${GREEN} ########## ${NC} - $objetivo\n"
+	echo -e "\n \e[95mUtilizando RTT: $THRTT ms | LOSS: $THLOSS % | QTD_PING: $PQTD | INTERVALO: $PITVL s | MODLIDADE: $m \n"
 
 	while read i; do
 		site=$(echo "$i" | cut -d' ' -f1);
@@ -168,7 +164,6 @@ echo -e "\n \e[95mUtilizando RTT: $THRTT ms | LOSS: $THLOSS % | QTD_PING: $PQTD 
                         	cat $PRELIMINAR_T | sed "/$site/d" > $PTMP
                         	cat $PTMP > $PRELIMINAR_T
                 	fi
-
 
 			if (( $(echo "$loss == 100.0" |bc -l) )); then
 				echo "${GREEN}$site - ${PROB}PERDAS: $loss %% | RTT: $rtt ms ${NC}| $time - ${FORA}FORA ${FORA}\n" >> $PRELIMINAR_T
